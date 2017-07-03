@@ -4,14 +4,30 @@
  * @todo:
  */
 
-services.factory('Access',function($q, STATUS, $cordovaGeolocation, $ionicLoading, $log) {
+services.service('Access',function($q, STATUS, $cordovaGeolocation, $ionicLoading, $log) {
 
+  var res = STATUS.MODEL;
+
+  var checkIfAsked = function (){
+    window.alert('Check if you denied permissions before, if you did the browser can have blocked the request');
+  };
 
   var access = {
-    "$hasLocationEnabled": function() {
-
+    "$canUseLocation": function() {
+      res.status = STATUS.UNAUTHORIZED;
+      if (window.cordova && window.cordova.plugins.Keyboard) {
+        cordova.plugins.diagnostic.isLocationAvailable(function() {
+          // Success
+          res.status = STATUS.OK;
+        }, function() {
+          // Error
+          checkIfAsked();
+        });
+      }
+      return res;
     },
     "$getCoordinates": function() {
+
       $ionicLoading.show({
         'template': '<ion-spinner icon="bubbles"></ion-spinner><br/>Acquiring location!'
       });
@@ -29,29 +45,19 @@ services.factory('Access',function($q, STATUS, $cordovaGeolocation, $ionicLoadin
         });
 
         var lat  = position.coords.latitude;
-        var long = position.coords.longitude;
+        var lng = position.coords.longitude;
+        var coordinate = new Coordinate(lat,lng);
 
-        var myLatlng = new google.maps.LatLng(lat, long);
-
-        var mapOptions = {
-          'center': myLatlng,
-          'zoom': 16,
-          'mapTypeId': google.maps.MapTypeId.ROADMAP
-        };
-
-        // var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-        return {
-          'status': STATUS.OK,
-          'data': position
-        };
+        res.status = STATUS.OK;
+        res.data = position;
       }, function(err) {
         $log.error(err);
-        return {
-          'status': STATUS.UNAUTHORIZED,
-          'data': err
-        };
+        checkIfAsked();
+        res.status = STATUS.UNAUTHORIZED;
+        res.data = err;
       }).finally(function() {
         $ionicLoading.hide();
+        return res;
       });
     }
   };

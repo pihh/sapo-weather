@@ -8,7 +8,7 @@
 var app = angular.module('sapo', ['ionic',
   'ngCordova',
   'sapo.controllers',
-  'sapo.controllers',
+  'sapo.services',
   'sapo.filters',
   'sapo.components']);
 var controllers = angular.module('sapo.controllers', []);

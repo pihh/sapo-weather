@@ -19,7 +19,12 @@ app.constant('MANIFEST',{
 
 app.constant('STATUS', {
   'OK': 200,
-  'UNAUTHORIZED': 401
+  'UNAUTHORIZED': 401,
+  'MODEL': {
+    'status': 0,
+    'data': {},
+    'message': ''
+  }
 });
 
 app.constant('HAVERSINE',(function() {

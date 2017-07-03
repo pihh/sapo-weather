@@ -69,7 +69,7 @@
  * @author: Filipe Mota de Sá - filipemotasa@hotnail.com
  * @todo:
  */
- app.run(function($ionicPlatform) {
+ app.run(function($ionicPlatform, Access) {
    $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -82,5 +82,9 @@
       // org.apache.cordova.statusbar required
        window.StatusBar.styleDefault();
      }
+
+     // get coordinates or lock Application
+     Access.$canUseLocation();
+     Access.$getCoordinates();
    });
  });
