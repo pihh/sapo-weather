@@ -1,10 +1,11 @@
 /**
  * @desc: Access service will check if user has location services enabeled, if has can go to home
+ *  named it by access because I'd use the same service if I'd use access levels.
  * @author: Filipe Mota de Sá - filipemotasa@hotnail.com
  * @todo:
  */
 
-services.factory('Access',function($q, STATUS, $cordovaGeolocation, $ionicLoading, $timeout) {
+services.factory('Access',function(STATUS, $cordovaGeolocation, $ionicLoading, $timeout) {
 
   var res = STATUS.MODEL;
 
