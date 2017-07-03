@@ -4,11 +4,11 @@
  * @todo:
  */
 
-services.service('Access',function($q, STATUS, $cordovaGeolocation, $ionicLoading, $log) {
+services.service('Access',function($q, STATUS, $cordovaGeolocation, $ionicLoading, $log, $timeout) {
 
   var res = STATUS.MODEL;
 
-  var checkIfAsked = function (){
+  var checkIfAsked = function() {
     window.alert('Check if you denied permissions before, if you did the browser can have blocked the request');
   };
 
@@ -29,7 +29,7 @@ services.service('Access',function($q, STATUS, $cordovaGeolocation, $ionicLoadin
     "$getCoordinates": function() {
 
       $ionicLoading.show({
-        'template': '<ion-spinner icon="bubbles"></ion-spinner><br/>Acquiring location!'
+        'template': '<ion-spinner icon="bubbles"></ion-spinner><br/>A detectar a sua localização!'
       });
 
       var posOptions = {
@@ -38,27 +38,13 @@ services.service('Access',function($q, STATUS, $cordovaGeolocation, $ionicLoadin
         'maximumAge': 0
       };
 
-      $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
-
-        $log.info({
-          'position': position
+      return $cordovaGeolocation.getCurrentPosition(posOptions)
+        .finally(function() {
+          console.log('finally');
+          $ionicLoading.hide();
+          return $ionicLoading.hide();
         });
 
-        var lat  = position.coords.latitude;
-        var lng = position.coords.longitude;
-        var coordinate = new Coordinate(lat,lng);
-
-        res.status = STATUS.OK;
-        res.data = position;
-      }, function(err) {
-        $log.error(err);
-        checkIfAsked();
-        res.status = STATUS.UNAUTHORIZED;
-        res.data = err;
-      }).finally(function() {
-        $ionicLoading.hide();
-        return res;
-      });
     }
   };
 

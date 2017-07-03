@@ -25,24 +25,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
     }
   })
 
-  .state('app.location',{
-    'url': '/location',
-    'templateUrl': 'templates/location.html',
-    'controller': 'LocationCtrl',
-    'views': {
-      'menuContent': {
-        'templateUrl': 'templates/location.html'
-      }
-    },
-    'resolve': {
-
-    }
-  })
-
   .state('app.home',{
     'url': '/home',
     'templateUrl': 'templates/home.html',
     'controller': 'HomeCtrl',
+    'views': {
+      'menuContent': {
+        'templateUrl': 'templates/home.html'
+      }
+    },
     'resolve': {
 
     }
@@ -85,5 +76,5 @@ app.config(function($stateProvider, $urlRouterProvider) {
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/location');
+  $urlRouterProvider.otherwise('/app/home');
 });

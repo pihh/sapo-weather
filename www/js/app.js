@@ -69,7 +69,30 @@
  * @author: Filipe Mota de Sá - filipemotasa@hotnail.com
  * @todo:
  */
- app.run(function($ionicPlatform, Access) {
+ app.run(function($ionicPlatform, Access ,$ionicModal, $rootScope) {
+
+   // get coordinates or lock Application
+   $rootScope.checkForCoordinates = function() {
+     Access.$getCoordinates().then(function(coordinates) {
+       $rootScope.myLocation = new Coordinate(coordinates.latitue,coordinates.longitude);
+       if ($rootScope.modal) {
+         $rootScope.modal.hide();
+         delete $rootScope.modal;
+       }
+     },function(error) {
+       if (!$rootScope.modal) {
+         $ionicModal.fromTemplateUrl('templates/location.html', {
+           'scope': $rootScope
+         }).then(function(modal) {
+           $rootScope.modal = modal;
+         }).finally(function() {
+           // load the modal
+           $rootScope.modal.show();
+         });
+       }
+     });
+   };
+
    $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -83,8 +106,7 @@
        window.StatusBar.styleDefault();
      }
 
-     // get coordinates or lock Application
-     Access.$canUseLocation();
-     Access.$getCoordinates();
+     $rootScope.checkForCoordinates();
+
    });
  });

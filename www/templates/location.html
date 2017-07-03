@@ -1,5 +1,24 @@
-<ion-view view-title="Location">
+<ion-modal-view>
+
   <ion-content>
-    <h1>Location</h1>
+    <div class=container>
+      <h1 class=title>
+        Serviços de localização descativados.
+      </h1>
+      <p>Se está a aceder a esta aplicação através de um browser, por favor verifique se recusou anteriormente o acesso aos servicços de localiação.</p>
+      <p>Se o tiver feito, precisa de actualizar as definições do mesmo.</p>
+      <br>
+      <br>
+      <p class=text-red>{{modal.message || "" }}</p>
+      <br>
+      <br>
+    </div>
+    <form ng-submit="checkForCoordinates()">
+      <div class="list">
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Tentar novamente</button>
+        </label>
+      </div>
+    </form>
   </ion-content>
-</ion-view>
+</ion-modal-view>
