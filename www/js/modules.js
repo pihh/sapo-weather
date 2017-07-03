@@ -6,6 +6,7 @@
 
 // Ionic Starter App
 var app = angular.module('sapo', ['ionic',
+  'ngCordova',
   'sapo.controllers',
   'sapo.controllers',
   'sapo.filters',
