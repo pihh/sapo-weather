@@ -10,48 +10,80 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
   .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    'url': '/app',
+    'abstract': true,
+    'templateUrl': 'templates/menu.html',
+    'controller': 'AppCtrl'
+  })
+
+  .state('app.docs',{
+    'url': '/docs',
+    'templateUrl': 'templates/docs.html',
+    'controller': 'DocsCtrl',
+    'resolve': {
+
+    }
+  })
+
+  .state('app.location',{
+    'url': '/location',
+    'templateUrl': 'templates/location.html',
+    'controller': 'LocationCtrl',
+    'views': {
+      'menuContent': {
+        'templateUrl': 'templates/location.html'
+      }
+    },
+    'resolve': {
+
+    }
+  })
+
+  .state('app.home',{
+    'url': '/home',
+    'templateUrl': 'templates/home.html',
+    'controller': 'HomeCtrl',
+    'resolve': {
+
+    }
   })
 
   .state('app.search', {
-    url: '/search',
-    views: {
+    'url': '/search',
+    'views': {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        'templateUrl': 'templates/search.html'
       }
     }
   })
 
   .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
+    'url': '/browse',
+    'views': {
+      'menuContent': {
+        'templateUrl': 'templates/browse.html'
       }
-    })
+    }
+  })
     .state('app.playlists', {
-      url: '/playlists',
-      views: {
+      'url': '/playlists',
+      'views': {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          'templateUrl': 'templates/playlists.html',
+          'controller': 'PlaylistsCtrl'
         }
       }
     })
 
   .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
+    'url': '/playlists/:playlistId',
+    'views': {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        'templateUrl': 'templates/playlist.html',
+        'controller': 'PlaylistCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/location');
 });
