@@ -1,5 +1,5 @@
 /**
- * @desc:
+ * @desc: Application base files. 
  * @author: Filipe Mota de Sá - filipemotasa@hotnail.com
  * @todo:
  */

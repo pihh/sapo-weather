@@ -1,9 +1,9 @@
 /**
- * @desc:
+ * @desc: Aplication constants
  * @author: Filipe Mota de Sá - filipemotasa@hotnail.com
  * @todo:
  */
- 
+
 app.constant('manifest',{
   name: 'Sapo fase 2',
   date: '03/07/2015',

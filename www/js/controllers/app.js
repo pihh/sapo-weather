@@ -1,3 +1,8 @@
+/**
+ * @desc: Application base controller. Uses Abstract template.
+ * @author: Filipe Mota de Sá - filipemotasa@hotnail.com
+ * @todo:
+ */
 controllers.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
