@@ -17,11 +17,11 @@ module.exports = function(config) {
       '../lib/ionic/js/angular/angular.js',
       '../lib/ionic/js/angular/angular-animate.js',
       '../lib/ionic/js/angular/angular-sanitize.js',
-      '../lib/angular-mocks/angular-mocks.js',
       '../lib/ionic/js/angular/angular-resource.js',
       '../lib/ionic/js/angular-ui/angular-ui-router.js',
       '../lib/ionic/js/ionic.js',
       '../lib/ionic/js/ionic-angular.js',
+      '../../node_modules/angular-mocks/angular-mocks.js',
 
       '../js/modules.js',
       '../js/**/*.js',

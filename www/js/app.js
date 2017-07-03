@@ -39,6 +39,10 @@
        _coordinates.lat = lat;
        _coordinates.lng = lng;
        _initialized = true;
+
+       this.lat = lat;
+       this.lng = lng;
+       this.coordinates = _coordinates;
      }
    };
 
