@@ -4,7 +4,7 @@
  * @todo:
  */
 
-services.service('Access',function($q, STATUS, $cordovaGeolocation, $ionicLoading, $log, $timeout) {
+services.factory('Access',function($q, STATUS, $cordovaGeolocation, $ionicLoading, $timeout) {
 
   var res = STATUS.MODEL;
 
@@ -27,24 +27,19 @@ services.service('Access',function($q, STATUS, $cordovaGeolocation, $ionicLoadin
       return res;
     },
     "$getCoordinates": function() {
-
       $ionicLoading.show({
         'template': '<ion-spinner icon="bubbles"></ion-spinner><br/>A detectar a sua localização!'
       });
-
       var posOptions = {
         'enableHighAccuracy': true,
         'timeout': 20000,
         'maximumAge': 0
       };
-
-      return $cordovaGeolocation.getCurrentPosition(posOptions)
-        .finally(function() {
-          console.log('finally');
+      return $cordovaGeolocation.getCurrentPosition(posOptions).finally(function() {
+        $timeout(function() {
           $ionicLoading.hide();
-          return $ionicLoading.hide();
-        });
-
+        },750);
+      });
     }
   };
 
