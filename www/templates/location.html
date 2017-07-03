@@ -9,7 +9,9 @@
       <p>Se o tiver feito, precisa de actualizar as definições do mesmo.</p>
       <br>
       <br>
-      <p class=text-red>{{modal.message || "" }}</p>
+      <small class="text-red text-center" ng-show=modal.message>
+        <i>{{modal.message || "" }}</i>
+      </small>
       <br>
       <br>
     </div>

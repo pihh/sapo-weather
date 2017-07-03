@@ -89,6 +89,8 @@ app.run(function($ionicPlatform, Access ,$ionicModal, $rootScope) {
            // load the modal
           $rootScope.modal.show();
         });
+      } else {
+        $rootScope.modal.message = 'Os serviços continuam desactivados, por favor tente novamente';
       }
     });
   };

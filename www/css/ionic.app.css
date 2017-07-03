@@ -9830,5 +9830,17 @@ a.button {
   color: white;
   text-shadow: 1px 1px 0px #365eed; }
 
+i:before, i:after {
+  content: "\""; }
+
 .container {
   padding: 25px !important; }
+
+.text-center {
+  text-align: center; }
+
+.text-red {
+  color: #ef473a; }
+
+i {
+  font-style: italic; }

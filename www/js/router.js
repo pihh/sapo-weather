@@ -24,6 +24,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
     }
   })
+  .state('app.doc',{
+    'url': '/doc/:id?',
+    'templateUrl': 'templates/doc.html',
+    'controller': 'DocsCtrl',
+    'resolve': {
+
+    }
+  })
 
   .state('app.home',{
     'url': '/home',

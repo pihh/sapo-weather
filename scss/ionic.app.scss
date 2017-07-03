@@ -22,7 +22,26 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 @import "scss/constants.scss";
 @import "scss/overrides.scss";
+@import "scss/placeholders.scss";
 
 .container{
   padding: 25px !important;
+}
+
+.text-center{
+  text-align:center;
+}
+
+.text-red{
+  color: $assertive;
+}
+
+i{
+  font-style: italic;
+  &:before {
+    @extend %aspas;
+  }
+  &:after{
+    @extend %aspas;
+  }
 }
