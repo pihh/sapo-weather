@@ -15,21 +15,22 @@ app.config(function($stateProvider, $urlRouterProvider) {
     'templateUrl': 'templates/menu.html',
     'controller': 'AppCtrl'
   })
-
-  .state('app.docs',{
+  .state('app.docs', {
     'url': '/docs',
-    'templateUrl': 'templates/docs.html',
-    'controller': 'DocsCtrl',
-    'resolve': {
-
+    'views': {
+      'menuContent': {
+        'templateUrl': 'templates/docs.html',
+        'controller': 'DocsCtrl'
+      }
     }
   })
-  .state('app.doc',{
-    'url': '/doc/:id?',
-    'templateUrl': 'templates/doc.html',
-    'controller': 'DocsCtrl',
-    'resolve': {
-
+  .state('app.doc', {
+    'url': '/doc/:index',
+    'views': {
+      'menuContent': {
+        'templateUrl': 'templates/doc.html',
+        'controller': 'DocsCtrl'
+      }
     }
   })
 

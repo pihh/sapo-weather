@@ -14,22 +14,27 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
+      <h1 class="title">Menu</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close ng-click="login()">
-          Login
+        <ion-item class="item item-divider">
+          Páginas
         </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
+        <ion-item menu-close href="#/app/home">
+          Inicio
         </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
+        <ion-item menu-close href="#/app/docs">
+          Documentação
         </ion-item>
-        <ion-item menu-close href="#/app/playlists">
-          Playlists
+      <ion-list>
+      <ion-list radio-group ngModel="filters">
+        <ion-item class="item item-divider">
+          Filtros
         </ion-item>
+          <ion-radio ng-model="filter" ng-value="'A'">Sem filtros</ion-radio>
+          <ion-radio ng-model="filter" ng-value="'B'">Choose B</ion-radio>
+          <ion-radio ng-model="filter" ng-value="'C'">Choose C</ion-radio>
       </ion-list>
     </ion-content>
   </ion-side-menu>

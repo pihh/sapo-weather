@@ -1,0 +1,18 @@
+<ion-modal-view>
+  <ion-content>
+    <div class=container>
+      <h1 class=title>
+        Mensagem.
+      </h1>
+
+      <br>
+      <br>
+      <small class="text-red text-center" ng-show=modal.message>
+        <i>{{modal.message || "" }}</i>
+      </small>
+      <br>
+      <br>
+    </div>
+    <button class="button button-block button-positive" type="button" ng-click="modal.hide()">Fechar</button>
+  </ion-content>
+</ion-modal-view>
