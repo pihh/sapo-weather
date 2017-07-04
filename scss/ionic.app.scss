@@ -25,7 +25,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "scss/placeholders.scss";
 
 .container{
-  padding: 25px !important;
+  padding: $defaultPadding !important;
+
+  ul{
+    list-style-type:disc;
+    padding: $defaultPadding;
+  }
 }
 
 .text-center{
