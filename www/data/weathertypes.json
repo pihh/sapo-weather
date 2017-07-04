@@ -1,0 +1,147 @@
+[
+  {
+    "descTipoTempoEN": "--",
+    "descTipoTempoPT": "---",
+    "idTipoTempo": -99
+  },
+  {
+    "descTipoTempoEN": "No information",
+    "descTipoTempoPT": "Sem informação",
+    "idTipoTempo": 0
+  },
+  {
+    "descTipoTempoEN": "Clear sky",
+    "descTipoTempoPT": "Céu limpo",
+    "idTipoTempo": 1
+  },
+  {
+    "descTipoTempoEN": "Partly cloudy",
+    "descTipoTempoPT": "Céu pouco nublado",
+    "idTipoTempo": 2
+  },
+  {
+    "descTipoTempoEN": "Sunny intervals",
+    "descTipoTempoPT": "Céu parcialmente nublado",
+    "idTipoTempo": 3
+  },
+  {
+    "descTipoTempoEN": "Cloudy ",
+    "descTipoTempoPT": "Céu muito nublado ou encoberto",
+    "idTipoTempo": 4
+  },
+  {
+    "descTipoTempoEN": "Cloudy (High cloud)",
+    "descTipoTempoPT": "Céu nublado por nuvens altas",
+    "idTipoTempo": 5
+  },
+  {
+    "descTipoTempoEN": "Showers",
+    "descTipoTempoPT": "Aguaceiros",
+    "idTipoTempo": 6
+  },
+  {
+    "descTipoTempoEN": "Light showers",
+    "descTipoTempoPT": "Aguaceiros fracos",
+    "idTipoTempo": 7
+  },
+  {
+    "descTipoTempoEN": "Heavy showers",
+    "descTipoTempoPT": "Aguaceiros fortes",
+    "idTipoTempo": 8
+  },
+  {
+    "descTipoTempoEN": "Rain",
+    "descTipoTempoPT": "Chuva",
+    "idTipoTempo": 9
+  },
+  {
+    "descTipoTempoEN": "Light rain",
+    "descTipoTempoPT": "Chuva fraca ou chuvisco",
+    "idTipoTempo": 10
+  },
+  {
+    "descTipoTempoEN": "Heavy rain",
+    "descTipoTempoPT": "Chuva forte",
+    "idTipoTempo": 11
+  },
+  {
+    "descTipoTempoEN": "Intermittent rain",
+    "descTipoTempoPT": "Períodos de chuva",
+    "idTipoTempo": 12
+  },
+  {
+    "descTipoTempoEN": "Intermittent ligth rain",
+    "descTipoTempoPT": "Períodos de chuva fraca",
+    "idTipoTempo": 13
+  },
+  {
+    "descTipoTempoEN": "Intermittent heavy rain",
+    "descTipoTempoPT": "Períodos de chuva forte",
+    "idTipoTempo": 14
+  },
+  {
+    "descTipoTempoEN": "Drizzle",
+    "descTipoTempoPT": "Chuvisco",
+    "idTipoTempo": 15
+  },
+  {
+    "descTipoTempoEN": "Mist",
+    "descTipoTempoPT": "Neblina",
+    "idTipoTempo": 16
+  },
+  {
+    "descTipoTempoEN": "Fog",
+    "descTipoTempoPT": "Nevoeiro ou nuvens baixas",
+    "idTipoTempo": 17
+  },
+  {
+    "descTipoTempoEN": "Snow",
+    "descTipoTempoPT": "Neve",
+    "idTipoTempo": 18
+  },
+  {
+    "descTipoTempoEN": "Thunderstorms",
+    "descTipoTempoPT": "Trovoada",
+    "idTipoTempo": 19
+  },
+  {
+    "descTipoTempoEN": "Showers and thunderstorms",
+    "descTipoTempoPT": "Aguaceiros e trovoada",
+    "idTipoTempo": 20
+  },
+  {
+    "descTipoTempoEN": "Hail",
+    "descTipoTempoPT": "Granizo",
+    "idTipoTempo": 21
+  },
+  {
+    "descTipoTempoEN": "Frost",
+    "descTipoTempoPT": "Geada",
+    "idTipoTempo": 22
+  },
+  {
+    "descTipoTempoEN": "Heavy rain and thunderstorms",
+    "descTipoTempoPT": "Chuva forte e trovoada",
+    "idTipoTempo": 23
+  },
+  {
+    "descTipoTempoEN": "Convective clouds",
+    "descTipoTempoPT": "Nebulosidade convectiva",
+    "idTipoTempo": 24
+  },
+  {
+    "descTipoTempoEN": "Partly cloudy",
+    "descTipoTempoPT": "Céu com períodos de muito nublado",
+    "idTipoTempo": 25
+  },
+  {
+    "descTipoTempoEN": "Fog",
+    "descTipoTempoPT": "Nevoeiro",
+    "idTipoTempo": 26
+  },
+  {
+    "descTipoTempoEN": "Cloudy",
+    "descTipoTempoPT": "Céu nublado",
+    "idTipoTempo": 27
+  }
+]

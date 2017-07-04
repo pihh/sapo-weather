@@ -47,7 +47,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
     }
   })
-
+/*
   .state('app.search', {
     'url': '/search',
     'views': {
@@ -84,6 +84,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   });
+  */
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
 });
