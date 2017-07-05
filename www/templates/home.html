@@ -1,9 +1,29 @@
-<ion-view view-title="Home">
+<ion-view view-title="Top 10">
   <ion-content>
-    <!-- <ion-list>
-      <!-- <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
-        {{playlist.title}}
-      </ion-item> -->
-    </ion-list> -->
+    <!-- <div class=container>
+      <h3>Top 10 praias mais próximas
+        <br>
+        <small>Clique no menu lateral para abrir os filtros de resultados.</small>
+      </h3>
+    <div> -->
+    <div>
+      <div class=container>
+        <h3>As 10 praias mais próximas:
+          <br>
+          <small>Clique no menu lateral para abrir os filtros de resultados.</small>
+        </h3>
+      </div>
+    <div>
+    <ion-list>
+      <ion-item ng-repeat="res in results" >
+        <p><b>Distancia:</b> {{ ::res.distFromMe }}<p>
+        <p><b>Temperatura da água:</b> {{ ::res.tempAguaMar }}<p>
+        <p><b>Ondulação:</b> {{ ::res.ondulacao }}</p>
+        <p><b>Direção da ondulação:</b> {{ ::res.dirOndulacao }}</p>
+        <p><b>Força do vento:</b> {{ ::res.ffVento }}</p>
+        <p><b>Direção do vento:</b> {{ ::res.ddVento }}</p>
+        <p><b>Vaga:</b> {{ ::res.vaga }}</p>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
