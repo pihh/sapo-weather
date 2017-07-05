@@ -17,6 +17,7 @@ app.constant('MANIFEST',{
   }
 });
 
+// Response model for promises or more complicated data
 app.constant('STATUS', {
   'OK': 200,
   'UNAUTHORIZED': 401,
@@ -27,6 +28,32 @@ app.constant('STATUS', {
   }
 });
 
+// North south east west and their translation
+app.constant('NSEW', {
+  'E': 'Este',
+  'W': 'Oeste',
+  'N': 'Norte',
+  'S': 'Sul',
+  'NE': 'Nordeste',
+  'SE': 'Sudeste',
+  'NW': 'Noroeste',
+  'SW': 'Sudoeste'
+});
+
+// Usefull data to display on the beaches list
+app.constant('DATA_MODEL',{
+  'distFromMe': 'float',
+  'lat': 'float',
+  'lng': 'float',
+  'tempAguaMar': 'float',
+  'ondulacao': 'float',
+  'dirOndulacao': 'NSEW',
+  'ffVento': 'float',
+  'ddvento': 'NSEW',
+  'vaga': 'float'
+});
+
+// Função haversine
 app.constant('HAVERSINE',(function() {
 
   var toRad = function(num) {
@@ -64,5 +91,40 @@ app.constant('HAVERSINE',(function() {
     res = res.toFixed(defaultOptions.decimalPlaces);
 
     return parseFloat(res);
+  };
+}()));
+
+app.constant('VALIDATOR', (function(NSEW) {
+  var againstList = {
+    'float': function(variable) {
+      return !isNaN(parseFloat(variable));
+    },
+    'nsew': function(variable) {
+      variable = variable.toUpperCase().trim();
+      return NSEW.hasOwnProperty(variable);
+    },
+    'array': function(variable) {
+      return (variable.constructor === Array);
+    },
+    'json': function(variable) {
+      try {
+        JSON.parse(variable);
+      } catch (e) {
+        return false;
+      }
+      return true;
+    }
+  };
+
+  return function VALIDATOR(variable, against) {
+
+    // trim and get to lower case so it matches the property
+    against = against.toLowerCase().trim();
+
+    if (!againstList.hasOwnProperty(against)) {
+      throw 'The validator can\'t recognize that validation';
+    }
+
+    return againstList[against](variable);
   };
 }()));

@@ -2,7 +2,7 @@
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="doc in docs" href="#/app/doc/{{$index}}" ng-click="selectDoc($index)">
-        {{$index + 1 }} - {{doc.name}}
+        {{$index + 1 }} - {{ ::doc.name}}
       </ion-item>
     </ion-list>
   </ion-content>

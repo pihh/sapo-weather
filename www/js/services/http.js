@@ -4,24 +4,30 @@
  * @todo:
  */
 
-services.service('http',function($http,$q) {
+services.service('http',function($http,$q, VALIDATOR) {
   var path = 'data/',
-    preffix = '.json';
-
+    preffix = '.json',
+    validate = VALIDATOR,
+    loadJsonFile = function(fileName) {
+      return $http.get(path + fileName + preffix);
+    };
   return {
     '$isJSON': function(json) {
-      try {
-        JSON.parse(json);
-      } catch (e) {
-        return false;
-      }
-      return true;
+      return validate(json, 'json');
     },
-    '$loadJsonFile': function(fileName) {
-      return $http.get(path + fileName + preffix);
-    },'$loadJsonFilesList': function(files) {
-      // todo validate if is a array of files with nmes
-      // run a chain promise
+    '$loadJsonFile': loadJsonFile,
+    '$loadJsonFilesList': function(data) {
+      // check if is a array
+      if (!validate(data,'array')) {
+        throw 'load JSON Files list needs an array';
+      }
+
+      var promises = [];
+      data.forEach(function(d) {
+        promises.push(loadJsonFile(d));
+      });
+
+      return $q.all(promises);
     }
   };
 });

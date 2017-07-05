@@ -5,6 +5,13 @@
  * @todo:
  */
 
+ // Trims the strings
+if (!String.prototype.trim) {
+  String.prototype.trim = function() {
+    return this.replace(/^\s+|\s+$/g,'');
+  };
+}
+
 // Converts numbers to rads.
 Number.prototype.toRad = function() {
   return this * Math.PI / 180;
@@ -71,10 +78,14 @@ var Coordinate = function(lat, lng) {
  * @todo:
  */
 app.run(function($ionicPlatform, Access ,$ionicModal, $rootScope) {
+
+  // My location is shared through all the application
+  $rootScope.myLocation = {};
+
  // get coordinates or lock Application
   $rootScope.checkForCoordinates = function() {
     Access.$getCoordinates().then(function(coordinates) {
-      $rootScope.myLocation = new Coordinate(coordinates.latitue,coordinates.longitude);
+      $rootScope.myLocation = new Coordinate(coordinates.coords.latitude,coordinates.coords.longitude);
       if ($rootScope.modal) {
         $rootScope.modal.hide();
         delete $rootScope.modal;
