@@ -45,7 +45,7 @@ describe('VALIDATOR', function() {
       expect(function() { validator(obj.success, obj.what); }).toBeTruthy();
     });
     it('Should return false if not ' + obj.what, function() {
-      expect(function() { validator(obj.fail, obj.what); }).toBeFalsy();
+      expect(validator(obj.fail, obj.what)).toBeFalsy();
     });
   }
 
