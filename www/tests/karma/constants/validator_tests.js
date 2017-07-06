@@ -1,65 +1,52 @@
 describe('VALIDATOR', function() {
 
   var validator;
-  var what;
+  var tests = [
+    {
+      'what': 'number',
+      'success': '1',
+      'fail': 'x'
+    },{
+      'what': 'float',
+      'success': 1.2,
+      'fail': 'x'
+    },{
+      'what': 'string',
+      'success': '1',
+      'fail': 12345
+    },{
+      'what': 'nsew',
+      'success': 'N',
+      'fail': 'x'
+    },{
+      'what': 'array',
+      'success': [],
+      'fail': {}
+    },{
+      'what': 'json',
+      'success': { "json": "json" },
+      'fail': { 'json': 'json' }
+    }
+  ];
 
-  beforeEach(module('sapo'));
+  beforeEach(angular.mock.module('sapo'));
   beforeEach( inject(function(VALIDATOR) {
     validator = VALIDATOR;
   }));
 
-  // Numbers
-  what = 'number';
-  it('Should return true if is ' + what, function() {
-    expect(function() { validator("1",what); }).toBeTruthy();
-  });
-  it('Should return false if not is ' + what, function() {
-    expect(function() { validator("x",what); }).toBeFalsy();
+  it('should have a VALIDATOR constant', function() {
+    expect(validator).toBeDefined();
   });
 
-  // Floats
-  what = 'float';
-  it('Should return true if is ' + what, function() {
-    expect(function() { validator(1.2,what); }).toBeTruthy();
-  });
-  it('Should return false if not is ' + what, function() {
-    expect(function() { validator("x",what); }).toBeFalsy();
-  });
 
-  // Strings
-  what = 'string';
-  it('Should return true if is ' + what, function() {
-    expect(function() { validator('xxx',what); }).toBeTruthy();
-  });
-  it('Should return false if not is ' + what, function() {
-    expect(function() { validator(2,what); }).toBeFalsy();
-  });
-
-  // North south east west constant
-  what = 'nsew';
-  it('Should return true if is ' + what, function() {
-    expect(function() { validator('N',what); }).toBeTruthy();
-  });
-  it('Should return false if not is ' + what, function() {
-    expect(function() { validator('X',what); }).toBeFalsy();
-  });
-
-  // Arrays
-  what = 'array';
-  it('Should return true if is ' + what, function() {
-    expect(function() { validator([],what); }).toBeTruthy();
-  });
-  it('Should return false if not is ' + what, function() {
-    expect(function() { validator({},what); }).toBeFalsy();
-  });
-
-  // Valid JSON
-  what = 'json';
-  it('Should return true if is ' + what, function() {
-    expect(function() { validator( { "json": "json" } ,what); }).toBeTruthy();
-  });
-  it('Should return false if not is ' + what, function() {
-    expect(function() { validator({json : "json" },what); }).toBeFalsy();
-  });
+  for (var index in tests) {
+    var obj = tests[index];
+    it('Should return true if is ' + obj.what, function() {
+      expect(function() { validator(obj.success, obj.what); }).toBeTruthy();
+    });
+    it('Should return false if not ' + obj.what, function() {
+      expect(function() { validator(obj.fail, obj.what); }).toBeFalsy();
+    });
+  }
 
 });

@@ -43,4 +43,4 @@ constants.constant('VALIDATOR', (function(NSEW) {
 
     return againstList[against](variable);
   };
-}()));
+}(NSEW)));

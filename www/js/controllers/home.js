@@ -6,6 +6,7 @@
  */
 app.controller('HomeCtrl', function($scope, jsonLoader, HAVERSINE, VALIDATOR, NSEW, $filter, $interval) {
 
+
   $scope.results =  [];
   $scope.filter = '';
 
