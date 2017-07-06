@@ -1,3 +1,4 @@
+"use strict";
 /**
  * @desc: All application routes, templates and controllers are mapped in this
  *    file. It's a angular ui router regular file.
@@ -10,48 +11,43 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
   .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    'url': '/app',
+    'abstract': true,
+    'templateUrl': 'templates/menu.html',
+    'controller': 'AppCtrl'
   })
-
-  .state('app.search', {
-    url: '/search',
-    views: {
+  .state('app.docs', {
+    'url': '/docs',
+    'views': {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        'templateUrl': 'templates/docs.html',
+        'controller': 'DocsCtrl'
+      }
+    }
+  })
+  .state('app.doc', {
+    'url': '/doc/:index',
+    'views': {
+      'menuContent': {
+        'templateUrl': 'templates/doc.html',
+        'controller': 'DocsCtrl'
       }
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
+  .state('app.home',{
+    'url': '/home',
+    'templateUrl': 'templates/home.html',
+    'views': {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        'templateUrl': 'templates/home.html',
+        'controller': 'HomeCtrl'
       }
+    },
+    'resolve': {
+
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/home');
 });

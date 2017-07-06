@@ -14,22 +14,31 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
+      <h1 class="title">Menu</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close ng-click="login()">
-          Login
+        <ion-item class="item item-divider">
+          Páginas
         </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
+        <ion-item menu-close href="#/app/home" ng-class="{'active': $state.name == 'app.home'} ">
+          Inicio
         </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
+        <ion-item menu-close href="#/app/docs" ng-class="{'active': ['app.docs','app.doc'].indexOf($state.name) > -1} ">
+          Documentação
         </ion-item>
-        <ion-item menu-close href="#/app/playlists">
-          Playlists
+      <ion-list>
+      <ion-list radio-group ngModel="filters">
+        <ion-item class="item item-divider">
+          Filtros {{ $parent.filter }}
         </ion-item>
+          <ion-radio ng-model="radio" ng-value="'distFromMe'" ng-change="updateFilter(radio)">Sem filtros.</ion-radio>
+          <ion-radio ng-model="radio" ng-value="'tempAguaMar'"  ng-change="updateFilter(radio)">Temperatura da água.</ion-radio>
+          <ion-radio ng-model="radio" ng-value="'ondulacao'" ng-change="updateFilter(radio)">Ondulação.</ion-radio>
+          <ion-radio ng-model="radio" ng-value="'dirOndulacao'" ng-change="updateFilter(radio)">Direção da ondulação.</ion-radio>
+          <ion-radio ng-model="radio" ng-value="'ffVento'" ng-change="updateFilter(radio)">Força do vento.</ion-radio>
+          <ion-radio ng-model="radio" ng-value="'ddVento'" ng-change="updateFilter(radio)">Direção do vento</ion-radio>
+          <ion-radio ng-model="radio" ng-value="'vaga'" ng-change="updateFilter(radio)">Vaga.</ion-radio>
       </ion-list>
     </ion-content>
   </ion-side-menu>
