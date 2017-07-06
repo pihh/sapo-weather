@@ -17,7 +17,9 @@ app.controller('HomeCtrl', function($scope, jsonLoader, HAVERSINE, VALIDATOR, NS
   var haversine = HAVERSINE;
   var validator = VALIDATOR;
 
-  var generateDistance = function() {
+  // Adds haversine generated property called distFromMe
+  // Since on a loop, added the possibility of injecting a scope parsing method
+  var generateDistance = function(parseDirections) {
     if ( $scope.praias ) {
       var myLocation = $scope.myLocation.coordinates;
       var start = new Coordinate(myLocation.lat, myLocation.lng);
@@ -27,15 +29,23 @@ app.controller('HomeCtrl', function($scope, jsonLoader, HAVERSINE, VALIDATOR, NS
         var end = new Coordinate(parseFloat(value.lat), parseFloat(value.long));
         $scope.praias[key].distFromMe = haversine(start, end);
 
-        // Parse directions Letter to string.
-        $scope.praias[key].dirOndulacao = NSEW[$scope.praias[key].dirOndulacao] || $scope.praias[key].dirOndulacao;
-        $scope.praias[key].ddVento = NSEW[$scope.praias[key].ddVento] || $scope.praias[key].ddVento;
-
+        if (parseDirections) {
+          parseDirections(key);
+        }
       });
 
     }
   };
 
+  // parses the directions
+  var parseDirections = function(key) {
+    // Parse directions Letter to string.
+    $scope.praias[key].dirOndulacao = NSEW[$scope.praias[key].dirOndulacao] || $scope.praias[key].dirOndulacao;
+    $scope.praias[key].ddVento = NSEW[$scope.praias[key].ddVento] || $scope.praias[key].ddVento;
+
+  };
+
+  // orders the scope by a property
   var orderBy = function(scopeProperty, orderProperty, limit) {
 
     if (!$scope.hasOwnProperty(scopeProperty) || !validator($scope[scopeProperty],'array') || !$scope[scopeProperty][0].hasOwnProperty(orderProperty)) {
@@ -57,6 +67,7 @@ app.controller('HomeCtrl', function($scope, jsonLoader, HAVERSINE, VALIDATOR, NS
       proceed = true;
     } catch (e) {
       // do nothing
+      return;
     }
 
     // if coordinates are not loaded, stop executing
@@ -74,7 +85,7 @@ app.controller('HomeCtrl', function($scope, jsonLoader, HAVERSINE, VALIDATOR, NS
 
         });
 
-        generateDistance();
+        generateDistance(true);
         orderBy('praias','distFromMe',10);
 
       },function(fail) {
@@ -87,12 +98,4 @@ app.controller('HomeCtrl', function($scope, jsonLoader, HAVERSINE, VALIDATOR, NS
     reloadLocation();
   });
 
-
-  // bootstrap
-  function bootstrap() {
-
-  }
-
-
-  bootstrap();
 });

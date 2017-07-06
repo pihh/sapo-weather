@@ -17,4 +17,5 @@ controllers.controller('AppCtrl', function($scope, $rootScope) {
   $scope.updateFilter = function(str) {
     $rootScope.filter = str;
   };
+
 });
