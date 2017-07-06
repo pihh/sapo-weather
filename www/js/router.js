@@ -1,3 +1,4 @@
+"use strict";
 /**
  * @desc: All application routes, templates and controllers are mapped in this
  *    file. It's a angular ui router regular file.

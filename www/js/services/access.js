@@ -1,3 +1,4 @@
+"use strict";
 /**
  * @desc: Access service will check if user has location services enabeled, if has can go to home
  *  named it by access because I'd use the same service if I'd use access levels.

@@ -1,9 +1,10 @@
+"use strict";
 /**
  * @desc: Controller for docs view
  * @author: Filipe Mota de Sá - filipemotasa@hotnail.com
  * @todo:
  */
-controllers.controller('DocsCtrl', function($scope, $ionicModal, $timeout, http, $stateParams) {
+controllers.controller('DocsCtrl', function($scope, $ionicModal, $timeout, jsonLoader, $stateParams) {
 
   // instanciate the scope
   $scope.docs = [];
@@ -34,8 +35,8 @@ controllers.controller('DocsCtrl', function($scope, $ionicModal, $timeout, http,
   };
 
   // List items view
-  http.$loadJsonFile('docs').then(function(data) {
-    // if (http.$isJSON(data.data)) {
+  jsonLoader.$loadJsonFile('docs').then(function(data) {
+    // if (jsonLoader.$isJSON(data.data)) {
     if (data.data) {
       $scope.docs = data.data;
       if ($stateParams.index) {

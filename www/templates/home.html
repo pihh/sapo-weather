@@ -15,7 +15,7 @@
       </div>
     <div>
     <ion-list>
-      <ion-item ng-repeat="res in results" >
+      <ion-item ng-repeat="res in results | orderByProperty:filter" >
         <p><b>Distancia:</b> {{ ::res.distFromMe }}<p>
         <p><b>Temperatura da água:</b> {{ ::res.tempAguaMar }}<p>
         <p><b>Ondulação:</b> {{ ::res.ondulacao }}</p>

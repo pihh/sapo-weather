@@ -1,3 +1,4 @@
+"use strict";
 /**
  * @desc: Declaration file for all modules and respective dependencies
  * @author: Filipe Mota de Sá - filipemotasa@hotnail.com
@@ -10,8 +11,10 @@ var app = angular.module('sapo', ['ionic',
   'sapo.controllers',
   'sapo.services',
   'sapo.filters',
-  'sapo.components']);
+  'sapo.components',
+  'sapo.constants']);
 var controllers = angular.module('sapo.controllers', []);
 var services = angular.module('sapo.services', []);
 var filters = angular.module('sapo.filters', []);
 var components = angular.module('sapo.components', []);
+var constants = angular.module('sapo.constants', []);

@@ -4,11 +4,17 @@
  * @author: Filipe Mota de Sá - filipemotasa@hotnail.com
  * @todo:
  */
-app.controller('HomeCtrl', function($scope, http, HAVERSINE, VALIDATOR, $filter) {
+app.controller('HomeCtrl', function($scope, jsonLoader, HAVERSINE, VALIDATOR, $filter, $interval) {
 
   $scope.results =  [];
+  $scope.filter = '';
+
+  $scope.$watch('$root.filter', function(newval,oldval) {
+    $scope.filter = newval;
+  });
 
   var haversine = HAVERSINE;
+  var validator = VALIDATOR;
 
   var generateDistance = function() {
     if ( $scope.praias ) {
@@ -20,13 +26,12 @@ app.controller('HomeCtrl', function($scope, http, HAVERSINE, VALIDATOR, $filter)
         $scope.praias[key].distFromMe = haversine(start, end);
       });
 
-      console.log($scope.praias);
     }
   };
 
   var orderBy = function(scopeProperty, orderProperty, limit) {
 
-    if (!$scope.hasOwnProperty(scopeProperty) || !VALIDATOR($scope[scopeProperty],'array') || !$scope[scopeProperty][0].hasOwnProperty(orderProperty)) {
+    if (!$scope.hasOwnProperty(scopeProperty) || !validator($scope[scopeProperty],'array') || !$scope[scopeProperty][0].hasOwnProperty(orderProperty)) {
       return;
 
     }
@@ -53,20 +58,13 @@ app.controller('HomeCtrl', function($scope, http, HAVERSINE, VALIDATOR, $filter)
     }
 
     var endpoints = ["locations","praias","weathertypes"];
-    http.$loadJsonFilesList(endpoints).then(
+    jsonLoader.$loadJsonFilesList(endpoints).then(
       function(success) {
         var i = 0;
         success.forEach(function(data,status,headers,config) {
           $scope[endpoints[i]] = data.data;
           i++;
 
-        });
-
-        window.console.log({
-          'myLocation': $scope.myLocation.coordinates,
-          'locations': $scope.locations,
-          'praias': $scope.praias,
-          'weathertypes': $scope.weathertypes,
         });
 
         generateDistance();
