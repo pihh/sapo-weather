@@ -42,6 +42,14 @@ describe('Coordinate', function() {
 
 // Number prototype
 describe('Number', function() {
+
+  // Fail case
+  it('Shouldn\'t return pi when 179 is converted to rads', function() {
+    var num = 179;
+    var pi = num.toRad();
+    expect(pi).toNotEqual(Math.PI);
+  });
+
   it('Should return pi when 180 is converted to rads', function() {
     var num = 180;
     var pi = num.toRad();

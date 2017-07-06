@@ -4,7 +4,7 @@
  * @author: Filipe Mota de Sá - filipemotasa@hotnail.com
  * @todo:
  */
-app.controller('HomeCtrl', function($scope, jsonLoader, HAVERSINE, VALIDATOR, $filter, $interval) {
+app.controller('HomeCtrl', function($scope, jsonLoader, HAVERSINE, VALIDATOR, NSEW, $filter, $interval) {
 
   $scope.results =  [];
   $scope.filter = '';
@@ -22,8 +22,14 @@ app.controller('HomeCtrl', function($scope, jsonLoader, HAVERSINE, VALIDATOR, $f
       var start = new Coordinate(myLocation.lat, myLocation.lng);
       angular.forEach($scope.praias, function(value, key) {
 
+        // Get the haversine
         var end = new Coordinate(parseFloat(value.lat), parseFloat(value.long));
         $scope.praias[key].distFromMe = haversine(start, end);
+
+        // Parse directions Letter to string.
+        $scope.praias[key].dirOndulacao = NSEW[$scope.praias[key].dirOndulacao] || $scope.praias[key].dirOndulacao;
+        $scope.praias[key].ddVento = NSEW[$scope.praias[key].ddVento] || $scope.praias[key].ddVento;
+
       });
 
     }

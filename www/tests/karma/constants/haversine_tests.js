@@ -8,7 +8,6 @@ describe('HAVERSINE', function() {
 
   beforeEach( inject(function(HAVERSINE) {
     constant = HAVERSINE;
-    console.log(HAVERSINE);
   }));
 
   it('Should throw error if start or end is not a coordinate', function() {
@@ -17,7 +16,7 @@ describe('HAVERSINE', function() {
     }).toThrow();
   });
 
-  it('Should return x when start is my home and end is my parents home', function() {
+  it('Should return 11.28130 when start is my home and end is my parents home', function() {
     expect(constant(myHome,parentsHome)).toEqual(11.28130);
   });
 
