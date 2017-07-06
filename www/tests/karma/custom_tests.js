@@ -47,7 +47,7 @@ describe('Number', function() {
   it('Shouldn\'t return pi when 179 is converted to rads', function() {
     var num = 179;
     var pi = num.toRad();
-    expect(pi).toNotEqual(Math.PI);
+    expect(pi).not.toEqual(Math.PI);
   });
 
   it('Should return pi when 180 is converted to rads', function() {
